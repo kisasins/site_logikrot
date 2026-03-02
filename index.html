@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGIKRAT — Развитие мышления</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0B0F1A;
+  --card:#111827;
+  --card2:#1F2937;
+  --text:#F9FAFB;
+  --sub:#9CA3AF;
+  --grad:linear-gradient(135deg,#7E57FF,#00E5FF);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Manrope',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
+
+header{
+  padding:20px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+nav a{
+  margin-left:30px;
+  text-decoration:none;
+  color:var(--text);
+  font-weight:600;
+  transition:.3s;
+}
+nav a:hover{
+  color:#00E5FF;
+}
+
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+}
+
+.hero h1{
+  font-size:64px;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.hero p{
+  margin:20px 0 40px;
+  font-size:20px;
+  color:var(--sub);
+}
+
+.btn{
+  padding:16px 32px;
+  border-radius:14px;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  transition:.3s;
+}
+
+.btn-primary{
+  background:var(--grad);
+  color:white;
+}
+
+.btn-primary:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px #7E57FF;
+}
+
+.btn-outline{
+  border:1px solid #7E57FF;
+  margin-left:20px;
+  color:white;
+}
+
+.btn-outline:hover{
+  background:rgba(126,87,255,0.2);
+}
+
+.glow-circle{
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,#7E57FF 0%,#00E5FF 60%,transparent 70%);
+  border-radius:50%;
+  filter:blur(80px);
+  position:absolute;
+  right:-100px;
+  top:50px;
+  opacity:0.5;
+  animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(20px);}
+}
+
+.section{
+  padding:120px 0;
+}
+
+.section h2{
+  font-size:42px;
+  margin-bottom:60px;
+  text-align:center;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card2);
+  padding:40px;
+  border-radius:20px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.card h3{
+  margin-bottom:15px;
+}
+
+.roadmap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:30px;
+}
+
+.step{
+  flex:1;
+  min-width:220px;
+  text-align:center;
+}
+
+.circle{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:var(--grad);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  font-weight:800;
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+.testimonials{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.testimonial{
+  background:var(--card2);
+  padding:30px;
+  border-radius:20px;
+}
+
+footer{
+  padding:60px 0;
+  text-align:center;
+  border-top:1px solid #1F2937;
+  color:var(--sub);
+}
+
+@media(max-width:768px){
+  .hero{
+    flex-direction:column;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:36px;
+  }
+  .glow-circle{
+    display:none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<header>
+<h2>LOGIKRAT</h2>
+<nav>
+<a href="#">Главная</a>
+<a href="#">Программа</a>
+<a href="#">Отзывы</a>
+<a href="#">Контакты</a>
+</nav>
+</header>
+
+<section class="hero">
+<div>
+<h1>Развиваем мышление<br>нового поколения</h1>
+<p>Логика. Стратегия. Интеллект.</p>
+<a href="#" class="btn btn-primary">Записаться</a>
+<a href="#" class="btn btn-outline">Подробнее</a>
+</div>
+<div class="glow-circle"></div>
+</section>
+</div>
+
+<section class="section">
+<div class="container">
+<h2>Почему LOGIKRAT?</h2>
+<div class="cards">
+<div class="card">
+<h3>Развитие логики</h3>
+<p>Учим анализировать и мыслить стратегически.</p>
+</div>
+<div class="card">
+<h3>Критическое мышление</h3>
+<p>Навыки, которые помогают принимать правильные решения.</p>
+</div>
+<div class="card">
+<h3>Подготовка к олимпиадам</h3>
+<p>Сильная база для побед и достижений.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>Программа обучения</h2>
+<div class="roadmap">
+<div class="step">
+<div class="circle">1</div>
+<h3>Диагностика</h3>
+<p>Определяем уровень и цели.</p>
+</div>
+<div class="step">
+<div class="circle">2</div>
+<h3>База</h3>
+<p>Фундамент логического мышления.</p>
+</div>
+<div class="step">
+<div class="circle">3</div>
+<h3>Продвинутый уровень</h3>
+<p>Решение сложных задач.</p>
+</div>
+<div class="step">
+<div class="circle">4</div>
+<h3>Турниры</h3>
+<p>Практика и реальные победы.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<h2>Отзывы</h2>
+<div class="testimonials">
+<div class="testimonial">
+<p>“Ребенок начал мыслить иначе и увереннее решает задачи.”</p>
+<strong>— Анна</strong>
+</div>
+<div class="testimonial">
+<p>“Очень современный и интересный формат обучения.”</p>
+<strong>— Дмитрий</strong>
+</div>
+<div class="testimonial">
+<p>“Лучший курс по развитию логики!”</p>
+<strong>— Мария</strong>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 LOGIKRAT. Все права защищены.</p>
+</footer>
+
+</body>
+</html>
