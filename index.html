@@ -17,7 +17,8 @@
   --grad:linear-gradient(135deg,#7E57FF,#00E5FF);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+
 body{
   font-family:'Manrope',sans-serif;
   background:var(--bg);
@@ -25,19 +26,18 @@ body{
   overflow-x:hidden;
 }
 
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-  position:relative;
-  z-index:2;
-}
+/* ================= HEADER ================= */
 
 header{
-  padding:20px 0;
+  position:fixed;
+  width:100%;
+  padding:20px 10%;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  z-index:100;
+  background:rgba(11,15,26,0.6);
+  backdrop-filter:blur(10px);
 }
 
 nav a{
@@ -49,11 +49,14 @@ nav a{
 }
 nav a:hover{color:#00E5FF;}
 
+/* ================= HERO ================= */
+
 .hero{
   position:relative;
   height:100vh;
   display:flex;
   align-items:center;
+  overflow:hidden;
 }
 
 .hero video{
@@ -63,19 +66,30 @@ nav a:hover{color:#00E5FF;}
   object-fit:cover;
   top:0;
   left:0;
+  filter:brightness(0.45);
   z-index:0;
-  filter:brightness(0.4);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to right, rgba(11,15,26,0.85), rgba(11,15,26,0.4));
+  z-index:1;
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:600px;
+  padding:0 10%;
+  max-width:700px;
 }
 
 .hero h1{
   font-size:64px;
   font-weight:800;
+  line-height:1.1;
 }
 
 .hero p{
@@ -94,14 +108,35 @@ nav a:hover{color:#00E5FF;}
   background:var(--grad);
   color:white;
 }
-
 .btn:hover{
   transform:scale(1.05);
-  box-shadow:0 0 25px #7E57FF;
+  box-shadow:0 0 40px #7E57FF;
 }
 
+/* ================= BACKGROUND ANIMATION ================= */
+
+.glow{
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,#7E57FF 0%,#00E5FF 60%,transparent 70%);
+  filter:blur(120px);
+  opacity:.3;
+  animation:float 8s ease-in-out infinite;
+  top:10%;
+  right:-200px;
+  z-index:1;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(40px);}
+}
+
+/* ================= SECTIONS ================= */
+
 .section{
-  padding:120px 0;
+  padding:120px 10%;
 }
 
 .section h2{
@@ -109,6 +144,8 @@ nav a:hover{color:#00E5FF;}
   margin-bottom:60px;
   text-align:center;
 }
+
+/* ================= TRANSPORT ================= */
 
 .transport-grid{
   display:grid;
@@ -120,25 +157,58 @@ nav a:hover{color:#00E5FF;}
   background:var(--card2);
   border-radius:20px;
   overflow:hidden;
-  transition:.3s;
+  transition:.4s;
 }
 .transport-card img{
   width:100%;
-  height:220px;
+  height:240px;
   object-fit:cover;
 }
 .transport-card:hover{
   transform:translateY(-10px);
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 .transport-card div{
   padding:25px;
 }
 
-.form-section{
+/* ================= ROADMAP ================= */
+
+.roadmap{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:30px;
+}
+
+.step{
+  flex:1;
+  min-width:220px;
+  text-align:center;
+}
+
+.circle{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:var(--grad);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  font-weight:800;
+  font-size:20px;
+  margin-bottom:20px;
+}
+
+/* ================= FORM ================= */
+
+.form-box{
   background:var(--card);
-  padding:60px;
+  padding:50px;
   border-radius:20px;
+  max-width:700px;
+  margin:auto;
 }
 
 form{
@@ -150,52 +220,55 @@ input,select,textarea{
   padding:15px;
   border-radius:10px;
   border:none;
+  background:#1F2937;
+  color:white;
   font-family:'Manrope';
 }
 
-input,select,textarea{
-  background:#1F2937;
-  color:white;
-}
-
 footer{
-  padding:60px 0;
+  padding:60px;
   text-align:center;
   border-top:1px solid #1F2937;
   color:var(--sub);
 }
 
+/* ================= MOBILE ================= */
+
 @media(max-width:768px){
   .hero h1{font-size:36px;}
-  .hero{height:80vh;}
+  .hero{height:85vh;}
 }
 </style>
 </head>
 
 <body>
 
-<header class="container">
+<header>
 <h2>LOGIKRAT Logistics</h2>
 <nav>
-<a href="#">Главная</a>
-<a href="#services">Транспорт</a>
+<a href="#transport">Транспорт</a>
+<a href="#roadmap">Процесс</a>
 <a href="#form">Запрос ставки</a>
 </nav>
 </header>
 
 <section class="hero">
+
 <video autoplay muted loop playsinline>
-<source src="https://cdn.coverr.co/videos/coverr-truck-driving-on-highway-1605/1080p.mp4" type="video/mp4">
+<source src="truck-bg.mp4" type="video/mp4">
 </video>
-<div class="container hero-content">
-<h1>Грузоперевозки нового уровня</h1>
-<p>Эпичная скорость. Надёжность. Контроль маршрута.</p>
+
+<div class="glow"></div>
+
+<div class="hero-content">
+<h1>Эпичные грузоперевозки<br>нового уровня</h1>
+<p>Гружёные фуры. Дальние маршруты. Полный контроль логистики.</p>
 <a href="#form" class="btn">Запросить ставку</a>
 </div>
+
 </section>
 
-<section id="services" class="section">
-<div class="container">
+<section id="transport" class="section">
 <h2>Наш транспорт</h2>
 <div class="transport-grid">
 
@@ -203,7 +276,7 @@ footer{
 <img src="https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62" alt="">
 <div>
 <h3>Фуры 20 тонн</h3>
-<p>Междугородние и международные перевозки.</p>
+<p>Международные и междугородние перевозки.</p>
 </div>
 </div>
 
@@ -219,18 +292,26 @@ footer{
 <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c" alt="">
 <div>
 <h3>Экспресс доставка</h3>
-<p>Срочные маршруты с минимальными сроками.</p>
+<p>Срочные маршруты по РФ и СНГ.</p>
 </div>
 </div>
 
 </div>
+</section>
+
+<section id="roadmap" class="section">
+<h2>Как мы работаем</h2>
+<div class="roadmap">
+<div class="step"><div class="circle">1</div><h3>Заявка</h3></div>
+<div class="step"><div class="circle">2</div><h3>Расчёт ставки</h3></div>
+<div class="step"><div class="circle">3</div><h3>Подача авто</h3></div>
+<div class="step"><div class="circle">4</div><h3>Доставка</h3></div>
 </div>
 </section>
 
 <section id="form" class="section">
-<div class="container">
 <h2>Запрос ставки по маршруту</h2>
-<div class="form-section">
+<div class="form-box">
 <form id="rateForm">
 <input type="text" placeholder="Ваше имя" required>
 <input type="tel" placeholder="Телефон" required>
@@ -238,14 +319,13 @@ footer{
 <input type="text" placeholder="Куда" required>
 <select required>
 <option value="">Тип груза</option>
-<option>Генеральный груз</option>
+<option>Генеральный</option>
 <option>Негабарит</option>
-<option>Опасный груз</option>
+<option>Опасный</option>
 </select>
 <textarea rows="4" placeholder="Комментарий"></textarea>
 <button type="submit" class="btn">Отправить запрос</button>
 </form>
-</div>
 </div>
 </section>
 
@@ -255,8 +335,8 @@ footer{
 
 <script>
 document.getElementById("rateForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  alert("Запрос отправлен! Мы свяжемся с вами.");
+e.preventDefault();
+alert("Запрос отправлен! Мы свяжемся с вами.");
 });
 </script>
 
