@@ -5,147 +5,151 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LOGIKRAT Logistics</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-  --bg:#0B0F1A;
-  --card:#111827;
-  --card2:#1F2937;
-  --text:#F9FAFB;
-  --sub:#9CA3AF;
-  --grad:linear-gradient(135deg,#7E57FF,#00E5FF);
+  --black:#0b0b0b;
+  --dark:#121212;
+  --card:#1c1c1c;
+  --orange:#ff6a00;
+  --orange-light:#ff8c1a;
+  --text:#ffffff;
+  --gray:#bdbdbd;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 
 body{
-  font-family:'Manrope',sans-serif;
-  background:var(--bg);
+  font-family:'Montserrat',sans-serif;
+  background:var(--black);
   color:var(--text);
-  overflow-x:hidden;
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 
 header{
   position:fixed;
   width:100%;
-  padding:20px 10%;
+  padding:20px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:100;
-  background:rgba(11,15,26,0.6);
+  background:rgba(0,0,0,0.7);
   backdrop-filter:blur(10px);
+}
+
+.logo{
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:1px;
 }
 
 nav a{
   margin-left:30px;
   text-decoration:none;
-  color:var(--text);
+  color:white;
   font-weight:600;
   transition:.3s;
 }
-nav a:hover{color:#00E5FF;}
 
-/* ================= HERO ================= */
+nav a:hover{
+  color:var(--orange);
+}
+
+/* ===== HERO ===== */
 
 .hero{
   position:relative;
   height:100vh;
   display:flex;
   align-items:center;
+  padding:0 8%;
   overflow:hidden;
 }
 
 .hero video{
   position:absolute;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   object-fit:cover;
-  top:0;
-  left:0;
-  filter:brightness(0.45);
-  z-index:0;
+  z-index:-2;
+  filter:brightness(0.4);
 }
 
-.hero::after{
-  content:"";
+.hero-overlay{
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to right, rgba(11,15,26,0.85), rgba(11,15,26,0.4));
-  z-index:1;
+  background:linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.3));
+  z-index:-1;
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
-  padding:0 10%;
-  max-width:700px;
+  max-width:650px;
 }
 
 .hero h1{
-  font-size:64px;
+  font-size:60px;
   font-weight:800;
   line-height:1.1;
 }
 
 .hero p{
-  margin:20px 0 40px;
-  font-size:20px;
-  color:#ddd;
+  margin:25px 0 40px;
+  color:var(--gray);
+  font-size:18px;
 }
 
 .btn{
-  padding:16px 32px;
-  border-radius:14px;
-  font-weight:600;
-  text-decoration:none;
   display:inline-block;
+  padding:15px 35px;
+  border-radius:6px;
+  font-weight:700;
+  text-decoration:none;
   transition:.3s;
-  background:var(--grad);
+}
+
+.btn-primary{
+  background:var(--orange);
   color:white;
 }
-.btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 40px #7E57FF;
+
+.btn-primary:hover{
+  background:var(--orange-light);
+  transform:translateY(-3px);
 }
 
-/* ================= BACKGROUND ANIMATION ================= */
-
-.glow{
-  position:absolute;
-  width:600px;
-  height:600px;
-  background:radial-gradient(circle,#7E57FF 0%,#00E5FF 60%,transparent 70%);
-  filter:blur(120px);
-  opacity:.3;
-  animation:float 8s ease-in-out infinite;
-  top:10%;
-  right:-200px;
-  z-index:1;
+.btn-outline{
+  border:2px solid var(--orange);
+  color:white;
+  margin-left:20px;
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(40px);}
+.btn-outline:hover{
+  background:var(--orange);
 }
 
-/* ================= SECTIONS ================= */
+/* ===== SECTIONS ===== */
 
 .section{
-  padding:120px 10%;
+  padding:120px 8%;
 }
 
 .section h2{
-  font-size:42px;
-  margin-bottom:60px;
   text-align:center;
+  font-size:40px;
+  margin-bottom:60px;
 }
-
-/* ================= TRANSPORT ================= */
 
 .transport-grid{
   display:grid;
@@ -153,62 +157,68 @@ nav a:hover{color:#00E5FF;}
   gap:30px;
 }
 
-.transport-card{
-  background:var(--card2);
-  border-radius:20px;
+.card{
+  background:var(--card);
+  border-radius:8px;
   overflow:hidden;
   transition:.4s;
 }
-.transport-card img{
+
+.card img{
   width:100%;
-  height:240px;
+  height:220px;
   object-fit:cover;
 }
-.transport-card:hover{
+
+.card:hover{
   transform:translateY(-10px);
-  box-shadow:0 30px 80px rgba(0,0,0,.6);
+  box-shadow:0 20px 50px rgba(255,106,0,0.3);
 }
-.transport-card div{
+
+.card-content{
   padding:25px;
 }
 
-/* ================= ROADMAP ================= */
+.card-content h3{
+  margin-bottom:15px;
+}
 
-.roadmap{
+/* ===== PROCESS ===== */
+
+.process{
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
   gap:30px;
+  text-align:center;
 }
 
 .step{
   flex:1;
-  min-width:220px;
-  text-align:center;
+  min-width:200px;
 }
 
-.circle{
-  width:80px;
-  height:80px;
+.step-number{
+  width:70px;
+  height:70px;
+  background:var(--orange);
   border-radius:50%;
-  background:var(--grad);
   display:flex;
   align-items:center;
   justify-content:center;
-  margin:auto;
+  margin:0 auto 20px;
   font-weight:800;
   font-size:20px;
-  margin-bottom:20px;
 }
 
-/* ================= FORM ================= */
+/* ===== FORM ===== */
 
 .form-box{
+  max-width:700px;
+  margin:0 auto;
   background:var(--card);
   padding:50px;
-  border-radius:20px;
-  max-width:700px;
-  margin:auto;
+  border-radius:8px;
 }
 
 form{
@@ -216,96 +226,100 @@ form{
   gap:20px;
 }
 
-input,select,textarea{
+input, select, textarea{
   padding:15px;
-  border-radius:10px;
+  background:#2a2a2a;
   border:none;
-  background:#1F2937;
+  border-radius:5px;
   color:white;
-  font-family:'Manrope';
+  font-family:'Montserrat';
 }
+
+button{
+  cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
 
 footer{
-  padding:60px;
   text-align:center;
-  border-top:1px solid #1F2937;
-  color:var(--sub);
+  padding:40px;
+  border-top:1px solid #222;
+  color:var(--gray);
 }
 
-/* ================= MOBILE ================= */
+/* ===== MOBILE ===== */
 
 @media(max-width:768px){
   .hero h1{font-size:36px;}
-  .hero{height:85vh;}
+  .btn-outline{margin-left:0;margin-top:15px;display:block;}
 }
+
 </style>
 </head>
-
 <body>
 
 <header>
-<h2>LOGIKRAT Logistics</h2>
+<div class="logo">LOGIKRAT Logistics</div>
 <nav>
 <a href="#transport">Транспорт</a>
-<a href="#roadmap">Процесс</a>
+<a href="#process">Процесс</a>
 <a href="#form">Запрос ставки</a>
 </nav>
 </header>
 
 <section class="hero">
-
 <video autoplay muted loop playsinline>
 <source src="truck-bg.mp4" type="video/mp4">
 </video>
-
-<div class="glow"></div>
+<div class="hero-overlay"></div>
 
 <div class="hero-content">
-<h1>Эпичные грузоперевозки<br>нового уровня</h1>
-<p>Гружёные фуры. Дальние маршруты. Полный контроль логистики.</p>
-<a href="#form" class="btn">Запросить ставку</a>
+<h1>Надёжные грузоперевозки по России и СНГ</h1>
+<p>Гружёные фуры. Дальние маршруты. Полный контроль логистики и прозрачные ставки.</p>
+<a href="#form" class="btn btn-primary">Запросить ставку</a>
+<a href="#transport" class="btn btn-outline">Наш транспорт</a>
 </div>
-
 </section>
 
 <section id="transport" class="section">
-<h2>Наш транспорт</h2>
+<h2>Наш автопарк</h2>
 <div class="transport-grid">
 
-<div class="transport-card">
+<div class="card">
 <img src="https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62" alt="">
-<div>
+<div class="card-content">
 <h3>Фуры 20 тонн</h3>
-<p>Международные и междугородние перевозки.</p>
+<p>Междугородние и международные перевозки любых типов грузов.</p>
 </div>
 </div>
 
-<div class="transport-card">
+<div class="card">
 <img src="https://images.unsplash.com/photo-1581091215367-59ab6b9b0f3d" alt="">
-<div>
+<div class="card-content">
 <h3>Контейнерные перевозки</h3>
-<p>Морская и ж/д логистика.</p>
+<p>ЖД и морская логистика с полным сопровождением.</p>
 </div>
 </div>
 
-<div class="transport-card">
+<div class="card">
 <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c" alt="">
-<div>
-<h3>Экспресс доставка</h3>
-<p>Срочные маршруты по РФ и СНГ.</p>
+<div class="card-content">
+<h3>Экспресс-доставка</h3>
+<p>Срочная подача транспорта и минимальные сроки доставки.</p>
 </div>
 </div>
 
 </div>
 </section>
 
-<section id="roadmap" class="section">
+<section id="process" class="section">
 <h2>Как мы работаем</h2>
-<div class="roadmap">
-<div class="step"><div class="circle">1</div><h3>Заявка</h3></div>
-<div class="step"><div class="circle">2</div><h3>Расчёт ставки</h3></div>
-<div class="step"><div class="circle">3</div><h3>Подача авто</h3></div>
-<div class="step"><div class="circle">4</div><h3>Доставка</h3></div>
+<div class="process">
+<div class="step"><div class="step-number">1</div><h3>Заявка</h3></div>
+<div class="step"><div class="step-number">2</div><h3>Расчёт ставки</h3></div>
+<div class="step"><div class="step-number">3</div><h3>Подача авто</h3></div>
+<div class="step"><div class="step-number">4</div><h3>Доставка груза</h3></div>
 </div>
 </section>
 
@@ -320,23 +334,23 @@ footer{
 <select required>
 <option value="">Тип груза</option>
 <option>Генеральный</option>
-<option>Негабарит</option>
+<option>Негабаритный</option>
 <option>Опасный</option>
 </select>
 <textarea rows="4" placeholder="Комментарий"></textarea>
-<button type="submit" class="btn">Отправить запрос</button>
+<button type="submit" class="btn btn-primary">Отправить запрос</button>
 </form>
 </div>
 </section>
 
 <footer>
-<p>© 2026 LOGIKRAT Logistics</p>
+© 2026 LOGIKRAT Logistics
 </footer>
 
 <script>
 document.getElementById("rateForm").addEventListener("submit", function(e){
 e.preventDefault();
-alert("Запрос отправлен! Мы свяжемся с вами.");
+alert("Заявка отправлена! Мы свяжемся с вами.");
 });
 </script>
 
