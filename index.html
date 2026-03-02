@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOGIKRAT — Развитие мышления</title>
+<title>LOGIKRAT Logistics</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 
@@ -29,6 +29,8 @@ body{
   width:90%;
   max-width:1200px;
   margin:auto;
+  position:relative;
+  z-index:2;
 }
 
 header{
@@ -45,28 +47,41 @@ nav a{
   font-weight:600;
   transition:.3s;
 }
-nav a:hover{
-  color:#00E5FF;
-}
+nav a:hover{color:#00E5FF;}
 
 .hero{
-  min-height:90vh;
+  position:relative;
+  height:100vh;
   display:flex;
   align-items:center;
-  justify-content:space-between;
+}
+
+.hero video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
+  z-index:0;
+  filter:brightness(0.4);
+}
+
+.hero-content{
   position:relative;
+  z-index:2;
+  max-width:600px;
 }
 
 .hero h1{
   font-size:64px;
   font-weight:800;
-  line-height:1.1;
 }
 
 .hero p{
   margin:20px 0 40px;
   font-size:20px;
-  color:var(--sub);
+  color:#ddd;
 }
 
 .btn{
@@ -76,44 +91,13 @@ nav a:hover{
   text-decoration:none;
   display:inline-block;
   transition:.3s;
-}
-
-.btn-primary{
   background:var(--grad);
   color:white;
 }
 
-.btn-primary:hover{
+.btn:hover{
   transform:scale(1.05);
   box-shadow:0 0 25px #7E57FF;
-}
-
-.btn-outline{
-  border:1px solid #7E57FF;
-  margin-left:20px;
-  color:white;
-}
-
-.btn-outline:hover{
-  background:rgba(126,87,255,0.2);
-}
-
-.glow-circle{
-  width:400px;
-  height:400px;
-  background:radial-gradient(circle,#7E57FF 0%,#00E5FF 60%,transparent 70%);
-  border-radius:50%;
-  filter:blur(80px);
-  position:absolute;
-  right:-100px;
-  top:50px;
-  opacity:0.5;
-  animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(20px);}
 }
 
 .section{
@@ -126,65 +110,52 @@ nav a:hover{
   text-align:center;
 }
 
-.cards{
+.transport-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
 }
 
-.card{
+.transport-card{
   background:var(--card2);
-  padding:40px;
   border-radius:20px;
+  overflow:hidden;
   transition:.3s;
 }
-
-.card:hover{
+.transport-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+.transport-card:hover{
   transform:translateY(-10px);
   box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
-
-.card h3{
-  margin-bottom:15px;
+.transport-card div{
+  padding:25px;
 }
 
-.roadmap{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:30px;
-}
-
-.step{
-  flex:1;
-  min-width:220px;
-  text-align:center;
-}
-
-.circle{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  background:var(--grad);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:auto;
-  font-weight:800;
-  font-size:20px;
-  margin-bottom:20px;
-}
-
-.testimonials{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
-
-.testimonial{
-  background:var(--card2);
-  padding:30px;
+.form-section{
+  background:var(--card);
+  padding:60px;
   border-radius:20px;
+}
+
+form{
+  display:grid;
+  gap:20px;
+}
+
+input,select,textarea{
+  padding:15px;
+  border-radius:10px;
+  border:none;
+  font-family:'Manrope';
+}
+
+input,select,textarea{
+  background:#1F2937;
+  color:white;
 }
 
 footer{
@@ -195,115 +166,99 @@ footer{
 }
 
 @media(max-width:768px){
-  .hero{
-    flex-direction:column;
-    text-align:center;
-  }
-  .hero h1{
-    font-size:36px;
-  }
-  .glow-circle{
-    display:none;
-  }
+  .hero h1{font-size:36px;}
+  .hero{height:80vh;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<header>
-<h2>LOGIKRAT</h2>
+<header class="container">
+<h2>LOGIKRAT Logistics</h2>
 <nav>
 <a href="#">Главная</a>
-<a href="#">Программа</a>
-<a href="#">Отзывы</a>
-<a href="#">Контакты</a>
+<a href="#services">Транспорт</a>
+<a href="#form">Запрос ставки</a>
 </nav>
 </header>
 
 <section class="hero">
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-truck-driving-on-highway-1605/1080p.mp4" type="video/mp4">
+</video>
+<div class="container hero-content">
+<h1>Грузоперевозки нового уровня</h1>
+<p>Эпичная скорость. Надёжность. Контроль маршрута.</p>
+<a href="#form" class="btn">Запросить ставку</a>
+</div>
+</section>
+
+<section id="services" class="section">
+<div class="container">
+<h2>Наш транспорт</h2>
+<div class="transport-grid">
+
+<div class="transport-card">
+<img src="https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62" alt="">
 <div>
-<h1>Развиваем мышление<br>нового поколения</h1>
-<p>Логика. Стратегия. Интеллект.</p>
-<a href="#" class="btn btn-primary">Записаться</a>
-<a href="#" class="btn btn-outline">Подробнее</a>
+<h3>Фуры 20 тонн</h3>
+<p>Междугородние и международные перевозки.</p>
 </div>
-<div class="glow-circle"></div>
-</section>
 </div>
 
-<section class="section">
-<div class="container">
-<h2>Почему LOGIKRAT?</h2>
-<div class="cards">
-<div class="card">
-<h3>Развитие логики</h3>
-<p>Учим анализировать и мыслить стратегически.</p>
+<div class="transport-card">
+<img src="https://images.unsplash.com/photo-1581091215367-59ab6b9b0f3d" alt="">
+<div>
+<h3>Контейнерные перевозки</h3>
+<p>Морская и ж/д логистика.</p>
 </div>
-<div class="card">
-<h3>Критическое мышление</h3>
-<p>Навыки, которые помогают принимать правильные решения.</p>
 </div>
-<div class="card">
-<h3>Подготовка к олимпиадам</h3>
-<p>Сильная база для побед и достижений.</p>
+
+<div class="transport-card">
+<img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c" alt="">
+<div>
+<h3>Экспресс доставка</h3>
+<p>Срочные маршруты с минимальными сроками.</p>
 </div>
+</div>
+
 </div>
 </div>
 </section>
 
-<section class="section">
+<section id="form" class="section">
 <div class="container">
-<h2>Программа обучения</h2>
-<div class="roadmap">
-<div class="step">
-<div class="circle">1</div>
-<h3>Диагностика</h3>
-<p>Определяем уровень и цели.</p>
-</div>
-<div class="step">
-<div class="circle">2</div>
-<h3>База</h3>
-<p>Фундамент логического мышления.</p>
-</div>
-<div class="step">
-<div class="circle">3</div>
-<h3>Продвинутый уровень</h3>
-<p>Решение сложных задач.</p>
-</div>
-<div class="step">
-<div class="circle">4</div>
-<h3>Турниры</h3>
-<p>Практика и реальные победы.</p>
-</div>
-</div>
-</div>
-</section>
-
-<section class="section">
-<div class="container">
-<h2>Отзывы</h2>
-<div class="testimonials">
-<div class="testimonial">
-<p>“Ребенок начал мыслить иначе и увереннее решает задачи.”</p>
-<strong>— Анна</strong>
-</div>
-<div class="testimonial">
-<p>“Очень современный и интересный формат обучения.”</p>
-<strong>— Дмитрий</strong>
-</div>
-<div class="testimonial">
-<p>“Лучший курс по развитию логики!”</p>
-<strong>— Мария</strong>
-</div>
+<h2>Запрос ставки по маршруту</h2>
+<div class="form-section">
+<form id="rateForm">
+<input type="text" placeholder="Ваше имя" required>
+<input type="tel" placeholder="Телефон" required>
+<input type="text" placeholder="Откуда" required>
+<input type="text" placeholder="Куда" required>
+<select required>
+<option value="">Тип груза</option>
+<option>Генеральный груз</option>
+<option>Негабарит</option>
+<option>Опасный груз</option>
+</select>
+<textarea rows="4" placeholder="Комментарий"></textarea>
+<button type="submit" class="btn">Отправить запрос</button>
+</form>
 </div>
 </div>
 </section>
 
 <footer>
-<p>© 2026 LOGIKRAT. Все права защищены.</p>
+<p>© 2026 LOGIKRAT Logistics</p>
 </footer>
+
+<script>
+document.getElementById("rateForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  alert("Запрос отправлен! Мы свяжемся с вами.");
+});
+</script>
 
 </body>
 </html>
